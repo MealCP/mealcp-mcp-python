@@ -1,0 +1,7 @@
+{
+  "status": 503,
+  "error": {
+    "code": "service_unavailable",
+    "message": "index unavailable"
+  }
+}

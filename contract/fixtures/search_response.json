@@ -1,0 +1,33 @@
+{
+  "query": "potatoes",
+  "found": 2,
+  "page": 1,
+  "page_size": 24,
+  "hits": [
+    {
+      "id": "rp_0f1e2d3c4b5a69788796a5b4c3d2e1f0",
+      "name": "Brit krumpli 1kg",
+      "country_code": "HU",
+      "retailer_slug": "tesco-hu",
+      "tags": ["vegan"],
+      "store_cities": ["Budapest"],
+      "latest_unit_price": 599.0,
+      "currency": "HUF"
+    },
+    {
+      "id": "rp_1a2b3c4d5e6f708192a3b4c5d6e7f809",
+      "name": "Baby Potatoes 500g",
+      "country_code": "HU",
+      "retailer_slug": "auchan-hu"
+    }
+  ],
+  "facets": [
+    {
+      "field": "retailer_slug",
+      "counts": [
+        { "value": "tesco-hu", "count": 1 },
+        { "value": "auchan-hu", "count": 1 }
+      ]
+    }
+  ]
+}

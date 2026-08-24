@@ -1,0 +1,20 @@
+{
+  "id": "rp_0f1e2d3c4b5a69788796a5b4c3d2e1f0",
+  "name": "Brit krumpli 1kg",
+  "brand": "Tesco",
+  "retailer_slug": "tesco-hu",
+  "currency": "HUF",
+  "from_date": "2026-01-01",
+  "to_date": "2026-08-13",
+  "observation_count": 12,
+  "store_count": 3,
+  "first_price": 599.0,
+  "last_price": 549.0,
+  "min_price": 549.0,
+  "max_price": 649.0,
+  "avg_price": 590.5,
+  "first_observed_at": "2026-01-05T08:00:00Z",
+  "last_observed_at": "2026-08-10T08:00:00Z",
+  "change": -50.0,
+  "change_pct": -8.35
+}
