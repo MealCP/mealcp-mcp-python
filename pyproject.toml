@@ -33,7 +33,10 @@ dependencies = [
 mealcp-mcp = "mealcp_mcp.__main__:main"
 
 [project.urls]
-Homepage = "https://mealcp.com"
+Homepage = "https://github.com/MealCP/mealcp-mcp-python"
+Repository = "https://github.com/MealCP/mealcp-mcp-python"
+Issues = "https://github.com/MealCP/mealcp-mcp-python/issues"
+Changelog = "https://github.com/MealCP/mealcp-mcp-python/releases"
 Documentation = "https://mealcp.com/integrations/mcp/"
 
 [dependency-groups]
