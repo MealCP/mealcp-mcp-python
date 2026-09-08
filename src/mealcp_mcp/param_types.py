@@ -14,6 +14,11 @@ from pydantic import StringConstraints
 CountryCode = Annotated[str, StringConstraints(pattern=r"^[A-Z]{2}$", min_length=2, max_length=2)]
 SlugValue = Annotated[str, StringConstraints(pattern=r"^[A-Za-z0-9_-]+$", max_length=128)]
 FreeToken = Annotated[str, StringConstraints(pattern=r"^[A-Za-z0-9 _-]+$", max_length=128)]
+# Leaf category slugs are parent-namespaced ("cheese/blue"), so the category
+# token allows slash-separated segments.
+CategoryToken = Annotated[
+    str, StringConstraints(pattern=r"^[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)*$", max_length=128)
+]
 
 SortOrder = Literal[
     "relevance",
@@ -25,4 +30,4 @@ SortOrder = Literal[
     "unit_price_desc",
 ]
 
-__all__ = ["CountryCode", "FreeToken", "SlugValue", "SortOrder"]
+__all__ = ["CategoryToken", "CountryCode", "FreeToken", "SlugValue", "SortOrder"]

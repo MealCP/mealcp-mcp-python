@@ -13,7 +13,13 @@ from mcp.server.mcpserver.exceptions import ToolError
 
 from mealcp_mcp.config import get_settings
 from mealcp_mcp.models import PriceHistoryResponse, SearchResponse
-from mealcp_mcp.param_types import CountryCode, FreeToken, SlugValue, SortOrder
+from mealcp_mcp.param_types import (
+    CategoryToken,
+    CountryCode,
+    FreeToken,
+    SlugValue,
+    SortOrder,
+)
 
 mcp = MCPServer("mealcp")
 
@@ -39,7 +45,7 @@ def search_products(
     chain: SlugValue | None = None,
     brand: FreeToken | None = None,
     tag: SlugValue | None = None,
-    category: SlugValue | None = None,
+    category: CategoryToken | None = None,
     city: FreeToken | None = None,
     currency: str | None = None,
     min_price: float | None = None,

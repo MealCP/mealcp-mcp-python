@@ -76,6 +76,37 @@ def test_tool_passes_query_params(monkeypatch: pytest.MonkeyPatch) -> None:
     assert captured["params"]["category"] == "fresh-produce"
 
 
+def test_tool_accepts_leaf_category_slash_token(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Leaf slugs are parent-namespaced ("cheese/blue") and must pass through.
+
+    Direct calls bypass MCP input validation, so legality is asserted against
+    the generated tool schema (what MCP clients validate with) and the
+    constrained param type itself.
+    """
+    import re
+
+    captured: dict[str, Any] = {}
+
+    def _spy_get(url: str, **kwargs: Any) -> httpx.Response:
+        captured["params"] = kwargs.get("params")
+        resp = httpx.Response(200, json=_canned_payload())
+        resp.request = httpx.Request("GET", url)
+        return resp
+
+    monkeypatch.setattr("mealcp_mcp.server.httpx.get", _spy_get)
+    from mealcp_mcp.server import mcp, search_products
+
+    search_products(category="cheese/blue")
+    assert captured["params"]["category"] == "cheese/blue"
+
+    schema = mcp._tool_manager._tools["search_products"].parameters
+    pattern = next(
+        sub["pattern"] for sub in schema["properties"]["category"]["anyOf"] if "pattern" in sub
+    )
+    assert re.fullmatch(pattern, "cheese/blue")
+    assert not re.fullmatch(pattern, "cheese//blue")
+
+
 def test_tool_omits_unset_params(monkeypatch: pytest.MonkeyPatch) -> None:
     captured: dict[str, Any] = {}
 
